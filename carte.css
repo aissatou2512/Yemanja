@@ -1,0 +1,793 @@
+/* ==========================================================================
+   YEMANJA BY SWEET COFFEE — PAGE "LA CARTE"
+   Palette solaire, chaude et lumineuse — volontairement indépendante de
+   styles.css (aucun vert, aucun fond sombre). Réutilise les mêmes familles
+   de police que le reste du site pour rester cohérent.
+   Sommaire : 1. Variables/reset  2. En-tête  3. Menu mobile  4. Hero
+   5. Onglets  6. Liste rapide des catégories  7. Catégories & plats
+   8. Animations  9. Responsive
+   ========================================================================== */
+
+/* 1. VARIABLES & RESET ------------------------------------------------- */
+:root {
+  --ivory: #faf3e8;
+  --sable: #f0e3cf;
+  --cream: #fffaf2;
+  --marron: #6b4226;
+  --marron-deep: #3d2818;
+  --caramel: #a8703f;
+  --gold: #c9a463;
+  --terracotta: #c98a63;
+  --green: #17393a;
+  --header-height: 88px;
+  --page-gutter: clamp(1.5rem, 5vw, 5.75rem);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.carte-body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--ivory);
+  color: var(--marron);
+  font-family: "Manrope", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.menu-is-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(100% - (var(--page-gutter) * 2), 1280px);
+  margin-inline: auto;
+}
+
+/* 2. EN-TÊTE — chrome marron foncé, comme la navbar/footer des autres
+   pages (plus foncé que les fonds de la page) ------------------------ */
+.carte-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(61, 40, 24, 0.94);
+  border-bottom: 1px solid rgba(201, 164, 99, 0.28);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+
+.carte-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100% - (var(--page-gutter) * 2), 1600px);
+  height: var(--header-height);
+  margin-inline: auto;
+}
+
+.carte-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  transition: opacity 250ms ease;
+}
+
+.carte-brand:hover {
+  opacity: 0.78;
+}
+
+.carte-brand__logo {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(250, 243, 232, 0.35);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.carte-brand__name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  color: var(--cream);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 0.8;
+}
+
+.carte-brand__name span {
+  color: var(--gold);
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.45rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.carte-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.1rem, 2.5vw, 2.5rem);
+}
+
+.carte-nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.1rem, 2vw, 2.2rem);
+}
+
+.carte-nav-links a {
+  position: relative;
+  padding-block: 0.5rem;
+  color: rgba(250, 243, 232, 0.78);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 250ms ease;
+}
+
+.carte-nav-links a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--gold);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 350ms var(--ease-out);
+}
+
+.carte-nav-links a:hover,
+.carte-nav-links a.is-current {
+  color: var(--cream);
+}
+
+.carte-nav-links a:hover::after,
+.carte-nav-links a.is-current::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.carte-nav-links__home {
+  color: var(--gold);
+}
+
+/* Bouton "Réserver" : pilule discrète, cohérente avec .button--light
+   utilisé sur la navbar de l'accueil (dark chrome + contour clair) */
+.carte-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(250, 243, 232, 0.5);
+  border-radius: 999px;
+  background: rgba(250, 243, 232, 0.08);
+  color: var(--cream);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: background-color 250ms ease, color 250ms ease, transform 250ms ease;
+}
+
+.carte-button:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--marron-deep);
+  transform: translateY(-2px);
+}
+
+.carte-navbar-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: rgba(250, 243, 232, 0.78);
+  transition: color 250ms ease, transform 250ms ease;
+}
+
+.carte-navbar-instagram svg {
+  width: 17px;
+  height: 17px;
+}
+
+.carte-navbar-instagram:hover {
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.carte-menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(250, 243, 232, 0.35);
+  border-radius: 50%;
+  background: rgba(250, 243, 232, 0.08);
+  cursor: pointer;
+}
+
+.carte-menu-toggle span {
+  display: block;
+  width: 15px;
+  height: 1px;
+  margin: 4px auto;
+  background: var(--cream);
+  transition: transform 350ms var(--ease-out);
+}
+
+.carte-menu-toggle[aria-expanded="true"] span:first-child {
+  transform: translateY(2.5px) rotate(45deg);
+}
+
+.carte-menu-toggle[aria-expanded="true"] span:last-child {
+  transform: translateY(-2.5px) rotate(-45deg);
+}
+
+/* 3. MENU MOBILE PREMIUM (reskinné solaire) ------------------------------ */
+.carte-mobile-menu {
+  display: none;
+}
+
+/* 4. HERO DE PAGE --------------------------------------------------------- */
+.carte-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201, 164, 99, 0.16), transparent 26rem),
+    radial-gradient(circle at 95% 20%, rgba(201, 138, 99, 0.14), transparent 22rem),
+    var(--ivory);
+}
+
+.carte-botanical {
+  position: absolute;
+  z-index: 0;
+  color: rgba(23, 57, 58, 0.14);
+  pointer-events: none;
+}
+
+.carte-botanical--left {
+  top: -1rem;
+  left: -1.5rem;
+  width: clamp(100px, 11vw, 150px);
+}
+
+.carte-botanical--right {
+  top: -1rem;
+  right: -1.5rem;
+  width: clamp(100px, 11vw, 150px);
+  transform: scaleX(-1);
+}
+
+.carte-hero__shell {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.carte-eyebrow {
+  margin: 0 0 1.1rem;
+  color: var(--caramel);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.carte-hero h1 {
+  margin: 0;
+  color: var(--green);
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: clamp(3.4rem, 7vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+}
+
+.carte-dot {
+  color: var(--gold);
+}
+
+.carte-lead {
+  max-width: 480px;
+  margin: 1.1rem auto 0;
+  color: rgba(90, 60, 38, 0.68);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* 5. ONGLETS À MANGER / À BOIRE ------------------------------------------- */
+.carte-tabs {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-bottom: 1px solid rgba(90, 60, 38, 0.14);
+}
+
+.carte-tab {
+  position: relative;
+  padding: 0 0 0.9rem;
+  border: 0;
+  background: transparent;
+  color: rgba(90, 60, 38, 0.45);
+  cursor: pointer;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 250ms ease;
+}
+
+.carte-tab::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  content: "";
+  transform: scaleX(0);
+  transition: transform 350ms var(--ease-out);
+}
+
+.carte-tab:hover {
+  color: var(--green);
+}
+
+.carte-tab.is-active {
+  color: var(--green);
+}
+
+.carte-tab.is-active::after {
+  transform: scaleX(1);
+}
+
+/* 6. LISTE RAPIDE DES CATÉGORIES — affichée juste après les onglets
+   À Manger / À Boire. Chaque catégorie (Entrées, Côté Mer, Mocktails…)
+   est un bouton avec fond et effet de survol, qui renvoie directement
+   à sa section plus bas dans la page. */
+.carte-quicklist {
+  column-span: all;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 clamp(2rem, 3.5vw, 2.8rem);
+}
+
+.carte-quicklist__item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid rgba(168, 112, 63, 0.35);
+  border-radius: 999px;
+  background: var(--sable);
+  color: var(--marron-deep);
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease,
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.carte-quicklist__item:hover {
+  background: var(--caramel);
+  border-color: var(--caramel);
+  color: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(168, 112, 63, 0.28);
+}
+
+/* 7. CATÉGORIES & PLATS ---------------------------------------------------- */
+.carte-panels {
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.carte-panel {
+  columns: 2;
+  column-gap: clamp(2.2rem, 4.5vw, 4rem);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+
+.carte-panel.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carte-category {
+  break-inside: avoid;
+  margin-bottom: clamp(2rem, 3.5vw, 2.8rem);
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+
+.carte-category__title {
+  position: relative;
+  margin: 0 0 1rem;
+  padding-bottom: 0.6rem;
+  color: var(--caramel);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.3rem, 1.7vw, 1.6rem);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.carte-category__title::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  content: "";
+}
+
+.carte-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Prêt pour l'ajout futur de photos : il suffit d'insérer une <img
+   class="carte-item__thumb"> en premier enfant d'un .carte-item. */
+.carte-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.carte-item__thumb {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.carte-item__name {
+  color: var(--marron-deep);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.carte-item__name em {
+  display: block;
+  margin-top: 0.15rem;
+  color: rgba(90, 60, 38, 0.55);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.carte-item::after {
+  flex: 1 1 auto;
+  align-self: end;
+  height: 1px;
+  margin-bottom: 0.32rem;
+  border-bottom: 1px dotted rgba(90, 60, 38, 0.25);
+  content: "";
+  order: 1;
+}
+
+.carte-item__price {
+  order: 2;
+  flex: 0 0 auto;
+  color: var(--caramel);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.carte-note {
+  margin: 0.8rem 0 0;
+  color: rgba(90, 60, 38, 0.5);
+  font-size: 0.62rem;
+  font-style: italic;
+}
+
+.carte-placeholder {
+  max-width: 440px;
+  margin: 2rem auto;
+  color: rgba(90, 60, 38, 0.6);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* 8. ANIMATIONS D'APPARITION AU SCROLL -------------------------------------- */
+.carte-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+}
+
+.carte-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 9. RESPONSIVE --------------------------------------------------------------- */
+@media (max-width: 900px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  .carte-nav-links,
+  .carte-navbar__actions > .carte-button {
+    display: none;
+  }
+
+  .carte-menu-toggle {
+    display: block;
+  }
+
+  .carte-mobile-menu {
+    position: fixed;
+    z-index: 999;
+    inset: 0.65rem;
+    display: grid;
+    grid-template-columns: minmax(0, 0.94fr) minmax(145px, 1.06fr);
+    grid-template-rows: minmax(0, 1fr);
+    max-height: calc(100svh - 1.3rem);
+    overflow: hidden;
+    visibility: hidden;
+    border: 1px solid rgba(201, 164, 99, 0.35);
+    border-radius: 4px;
+    background: var(--sable);
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out), visibility 400ms;
+  }
+
+  .carte-mobile-menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Le header (zones transparentes) ne doit plus intercepter les clics
+     par-dessus le menu ouvert : seuls le logo, l'icône Instagram et le
+     bouton (X) — visibles au-dessus du menu — restent cliquables. */
+  body.menu-is-open .carte-site-header {
+    pointer-events: none;
+  }
+
+  body.menu-is-open .carte-site-header .carte-brand,
+  body.menu-is-open .carte-site-header .carte-navbar-instagram,
+  body.menu-is-open .carte-site-header .carte-menu-toggle {
+    pointer-events: auto;
+  }
+
+  .carte-mobile-menu__visual {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--marron-deep);
+  }
+
+  .carte-mobile-menu__visual::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(61, 40, 24, 0.6), transparent 48%);
+    content: "";
+  }
+
+  .carte-mobile-menu__visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 1000ms var(--ease-out);
+  }
+
+  .carte-mobile-menu.is-open .carte-mobile-menu__visual img {
+    transform: scale(1);
+  }
+
+  .carte-mobile-menu__visual-caption {
+    position: absolute;
+    z-index: 1;
+    right: 1rem;
+    bottom: 1.1rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: rgba(250, 243, 232, 0.85);
+    font-size: 0.48rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .carte-mobile-menu__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 3.5rem clamp(1rem, 4vw, 2rem) 1.25rem;
+    background:
+      radial-gradient(circle at 80% 0%, rgba(201, 164, 99, 0.16), transparent 32%),
+      var(--sable);
+  }
+
+  .carte-mobile-menu__eyebrow {
+    margin: 0 0 1.6rem;
+    color: var(--caramel);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+  }
+
+  .carte-mobile-menu__links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carte-mobile-menu__links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(90, 60, 38, 0.14);
+    color: var(--marron-deep);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.6rem, 4.4vw, 2.6rem);
+    line-height: 1;
+    transition: color 250ms ease, padding-left 350ms var(--ease-out);
+  }
+
+  .carte-mobile-menu__links a:hover {
+    padding-left: 0.4rem;
+    color: var(--caramel);
+  }
+
+  .carte-mobile-menu__links a span {
+    flex: 0 0 auto;
+    color: var(--gold);
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+  }
+
+  .carte-mobile-menu__footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+  }
+
+  .carte-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .carte-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(168, 112, 63, 0.4);
+    border-radius: 50%;
+    color: var(--marron);
+    transition: color 250ms ease, border-color 250ms ease, background-color 250ms ease;
+  }
+
+  .carte-social-links a svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .carte-social-links a:hover {
+    border-color: var(--green);
+    background: rgba(23, 57, 58, 0.08);
+    color: var(--green);
+  }
+
+  .carte-mobile-menu__footer-mark {
+    color: var(--gold);
+    font-size: 0.46rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .carte-panel {
+    columns: 1;
+  }
+
+  .carte-quicklist {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --page-gutter: 1.25rem;
+  }
+
+  .carte-brand__name {
+    display: none;
+  }
+
+  .carte-hero {
+    padding-top: 3rem;
+  }
+
+  .carte-item__name {
+    font-size: 0.8rem;
+  }
+
+  .carte-quicklist__item {
+    padding: 0.48rem 0.95rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .carte-mobile-menu {
+    grid-template-columns: minmax(0, 1.13fr) minmax(104px, 0.87fr);
+  }
+
+  .carte-mobile-menu__content {
+    padding-inline: 0.85rem;
+  }
+}

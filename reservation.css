@@ -1,0 +1,523 @@
+/* ==========================================================================
+   PAGE "RÉSERVATION" — styles propres à ce parcours en 3 étapes.
+   Réutilise les variables et classes de base de styles.css (:root, .button,
+   .page-shell, .site-header, .brand, .heading-dot, .section-eyebrow…).
+   ========================================================================== */
+
+.reservation-body {
+  background: var(--cream);
+}
+
+/* En-tête simplifié */
+.reservation-header {
+  position: sticky;
+  top: 0;
+}
+
+.reservation-header .navbar {
+  justify-content: space-between;
+}
+
+.reservation-header__back {
+  color: rgba(255, 253, 248, 0.78);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 250ms ease;
+}
+
+.reservation-header__back:hover {
+  color: var(--white);
+}
+
+.reservation-page {
+  padding-top: calc(var(--header-height) + clamp(2.5rem, 5vw, 4rem));
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.reservation-intro {
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  text-align: center;
+}
+
+.reservation-intro h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.reservation-intro__lead {
+  max-width: 440px;
+  margin: 1rem auto 0;
+  color: rgba(23, 57, 58, 0.62);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.reservation-shell {
+  max-width: 720px;
+}
+
+/* Barre de progression */
+.reservation-progress {
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.reservation-progress__track {
+  position: relative;
+  height: 2px;
+  margin-bottom: 1rem;
+  background: rgba(23, 57, 58, 0.12);
+}
+
+.reservation-progress__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  background: var(--sand);
+  transition: width 550ms var(--ease-out);
+}
+
+.reservation-progress__steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reservation-progress__steps li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: rgba(23, 57, 58, 0.4);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 350ms ease;
+}
+
+.reservation-progress__steps li span {
+  color: rgba(23, 57, 58, 0.3);
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  transition: color 350ms ease;
+}
+
+.reservation-progress__steps li.is-active,
+.reservation-progress__steps li.is-done {
+  color: var(--ink);
+}
+
+.reservation-progress__steps li.is-active span,
+.reservation-progress__steps li.is-done span {
+  color: var(--sand);
+}
+
+/* Étapes du formulaire */
+.reservation-form {
+  position: relative;
+}
+
+.reservation-step {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 550ms var(--ease-out), transform 550ms var(--ease-out);
+}
+
+.reservation-step.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reservation-step__title {
+  padding: 0;
+  margin: 0 0 0.4rem;
+  color: var(--ink);
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  font-weight: 400;
+}
+
+.reservation-hint {
+  margin: 0 0 1.8rem;
+  color: rgba(23, 57, 58, 0.55);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+.reservation-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.reservation-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.reservation-field label {
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reservation-field label span {
+  color: rgba(23, 57, 58, 0.45);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.reservation-field input,
+.reservation-field select,
+.reservation-field textarea {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(23, 57, 58, 0.2);
+  border-radius: 2px;
+  background: var(--white);
+  color: var(--ink);
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.85rem;
+  transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.reservation-field input:focus,
+.reservation-field select:focus,
+.reservation-field textarea:focus {
+  outline: none;
+  border-color: var(--sand);
+  box-shadow: 0 0 0 3px rgba(201, 164, 99, 0.18);
+}
+
+.reservation-field input:invalid[data-touched="true"],
+.reservation-field select:invalid[data-touched="true"] {
+  border-color: #b8543f;
+}
+
+.reservation-field textarea {
+  resize: vertical;
+}
+
+.reservation-error {
+  display: none;
+  color: #b8543f;
+  font-size: 0.68rem;
+}
+
+.reservation-error.is-visible {
+  display: block;
+}
+
+.reservation-field--guests {
+  max-width: 220px;
+}
+
+/* Cartes de zone */
+.reservation-zones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.zone-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.4rem 1.2rem;
+  border: 1px solid rgba(23, 57, 58, 0.16);
+  border-radius: 4px;
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+}
+
+.zone-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.zone-card__mark {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(201, 164, 99, 0.7);
+  border-radius: 50%;
+  transition: background-color 250ms ease, border-color 250ms ease;
+}
+
+.zone-card__name {
+  color: var(--ink);
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.zone-card__desc {
+  color: rgba(23, 57, 58, 0.55);
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.zone-card:hover {
+  border-color: rgba(201, 164, 99, 0.6);
+  transform: translateY(-2px);
+}
+
+.zone-card:has(input:checked) {
+  border-color: var(--sand);
+  box-shadow: 0 12px 26px rgba(201, 164, 99, 0.2);
+}
+
+.zone-card:has(input:checked) .zone-card__mark {
+  background: var(--sand);
+  border-color: var(--sand);
+  box-shadow: 0 0 0 3px rgba(201, 164, 99, 0.22);
+}
+
+.zone-card:has(input:focus-visible) {
+  outline: 2px solid var(--sand);
+  outline-offset: 2px;
+}
+
+/* Actions (boutons Continuer / Retour) */
+.reservation-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.reservation-actions--split {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reservation-back {
+  border: 0;
+  background: none;
+  color: rgba(23, 57, 58, 0.55);
+  cursor: pointer;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 250ms ease;
+}
+
+.reservation-back:hover {
+  color: var(--ink);
+}
+
+.reservation-page .button--solid {
+  background: var(--marron);
+  color: var(--cream);
+}
+
+.reservation-page .button--solid:hover {
+  background: var(--ink-deep);
+}
+
+.reservation-page .button--outline {
+  border-color: rgba(107, 66, 38, 0.35);
+  color: var(--marron);
+}
+
+.reservation-page .button--outline:hover {
+  border-color: var(--marron);
+  background: var(--marron);
+  color: var(--cream);
+}
+
+/* Récapitulatif */
+.reservation-summary {
+  margin-top: 2rem;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid rgba(201, 164, 99, 0.35);
+  border-radius: 4px;
+  background: var(--cream-soft);
+}
+
+.reservation-summary h2 {
+  margin: 0 0 1rem;
+  color: var(--sand);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.reservation-summary dl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.reservation-summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px dotted rgba(23, 57, 58, 0.16);
+  padding-bottom: 0.55rem;
+}
+
+.reservation-summary__row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.reservation-summary__row dt {
+  color: rgba(23, 57, 58, 0.55);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.reservation-summary__row dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+.reservation-submit-error {
+  margin: 1.2rem 0 0;
+  color: #b8543f;
+  font-size: 0.78rem;
+}
+
+.reservation-submit-error.is-visible {
+  display: block;
+}
+
+button[data-submit] {
+  position: relative;
+}
+
+button[data-submit].is-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Confirmation */
+.reservation-confirmation {
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgba(201, 164, 99, 0.4);
+  border-radius: 6px;
+  background: var(--cream-soft);
+  color: var(--marron);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.reservation-confirmation.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reservation-confirmation__ornament {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--sand);
+  border-radius: 100% 0 100% 0;
+  transform: rotate(45deg);
+}
+
+.reservation-confirmation h2 {
+  max-width: 420px;
+  margin: 0 auto 1.6rem;
+  color: var(--ink);
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.reservation-confirmation .reservation-summary--final {
+  max-width: 420px;
+  margin: 0 auto;
+  background: rgba(255, 250, 242, 0.7);
+  border-color: rgba(201, 164, 99, 0.35);
+  text-align: left;
+}
+
+.reservation-confirmation .reservation-summary--final dt {
+  color: rgba(90, 60, 38, 0.55);
+}
+
+.reservation-confirmation .reservation-summary--final dd {
+  color: var(--marron);
+}
+
+.reservation-confirmation .reservation-summary--final .reservation-summary__row {
+  border-bottom-color: rgba(90, 60, 38, 0.14);
+}
+
+.reservation-confirmation__note {
+  max-width: 400px;
+  margin: 1.6rem auto 1.8rem;
+  color: rgba(90, 60, 38, 0.72);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .reservation-field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reservation-zones {
+    grid-template-columns: 1fr;
+  }
+
+  .reservation-progress__steps li {
+    font-size: 0.54rem;
+  }
+
+  .reservation-summary__row {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .reservation-summary__row dd {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reservation-step,
+  .reservation-confirmation,
+  .reservation-progress__fill {
+    transition: none;
+  }
+}

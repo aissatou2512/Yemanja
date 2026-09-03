@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Yemanja by Sweet Coffee — restaurant & lounge au bord de l'océan, à la Pointe des Almadies, Dakar."
+    />
+    <meta name="theme-color" content="#5A3D2E" />
+    <title>Yemanja by Sweet Coffee — Dakar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header" data-header>
+      <nav class="navbar" aria-label="Navigation principale">
+        <a class="brand" href="#accueil" aria-label="Yemanja by Sweet Coffee — accueil">
+          <img class="brand__logo" src="assets/logo.png" alt="Logo Yemanja" />
+          <span class="brand__name">Yemanja <span>by Sweet Coffee</span></span>
+        </a>
+
+        <div class="navbar__actions">
+          <div class="nav-links" data-nav-links>
+            <a href="#univers">L’Univers</a>
+            <a href="carte.html">La Carte</a>
+            <a href="#avis">Avis</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <a class="button button--small button--light" href="reservation.html">RÉSERVER</a>
+
+          <a
+            class="navbar-instagram"
+            href="https://www.instagram.com/yemanja.dkr/?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Yemanja sur Instagram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M12 2.2c2.7 0 3 0 4.1.06 1.1.05 1.8.22 2.4.46.65.25 1.2.6 1.75 1.14.54.55.9 1.1 1.14 1.75.24.6.4 1.3.46 2.4.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.05 1.1-.22 1.8-.46 2.4a4.7 4.7 0 0 1-1.14 1.75 4.7 4.7 0 0 1-1.75 1.14c-.6.24-1.3.4-2.4.46-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-1.1-.05-1.8-.22-2.4-.46a4.7 4.7 0 0 1-1.75-1.14 4.7 4.7 0 0 1-1.14-1.75c-.24-.6-.4-1.3-.46-2.4C2.2 15 2.2 14.7 2.2 12s0-3 .06-4.1c.05-1.1.22-1.8.46-2.4.25-.65.6-1.2 1.14-1.75A4.7 4.7 0 0 1 5.6 2.6c.6-.24 1.3-.4 2.4-.46C9.1 2.2 9.4 2.2 12 2.2zm0 1.8c-2.66 0-2.97 0-4.02.06-.9.04-1.39.19-1.71.31-.43.17-.74.37-1.06.7-.32.32-.52.63-.7 1.06-.12.32-.27.8-.31 1.71C4.15 8.88 4.15 9.19 4.15 12s0 2.97.06 4.02c.04.9.19 1.39.31 1.71.17.43.37.74.7 1.06.32.32.63.52 1.06.7.32.12.8.27 1.71.31 1.05.06 1.36.06 4.02.06s2.97 0 4.02-.06c.9-.04 1.39-.19 1.71-.31.43-.17.74-.37 1.06-.7.32-.32.52-.63.7-1.06.12-.32.27-.8.31-1.71.06-1.05.06-1.36.06-4.02s0-2.97-.06-4.02c-.04-.9-.19-1.39-.31-1.71a2.9 2.9 0 0 0-.7-1.06 2.9 2.9 0 0 0-1.06-.7c-.32-.12-.8-.27-1.71-.31C14.97 4 14.66 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm4.8-2a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16z"
+              />
+            </svg>
+          </a>
+
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            data-menu-toggle
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+      <div class="mobile-menu__visual">
+        <img src="assets/menu-photo.jpg" alt="Vue sur l'océan depuis Yemanja" />
+        <div class="mobile-menu__visual-caption">
+          <span>Pointe des Almadies</span>
+          <span>Dakar · Sénégal</span>
+        </div>
+      </div>
+      <div class="mobile-menu__content">
+        <div>
+          <p class="mobile-menu__eyebrow">YEMANJA · DAKAR</p>
+          <div class="mobile-menu__links">
+            <a href="#univers">L’Univers <span>01</span></a>
+            <a href="carte.html">La Carte <span>02</span></a>
+            <a href="#avis">Avis <span>03</span></a>
+            <a href="#contact">Contact <span>04</span></a>
+            <a href="reservation.html">Réserver <span>↗</span></a>
+          </div>
+        </div>
+        <div class="mobile-menu__footer">
+          <div class="social-links" aria-label="Réseaux sociaux">
+            <a
+              href="https://www.instagram.com/yemanja.dkr/?hl=fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Yemanja sur Instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2.2c2.7 0 3 0 4.1.06 1.1.05 1.8.22 2.4.46.65.25 1.2.6 1.75 1.14.54.55.9 1.1 1.14 1.75.24.6.4 1.3.46 2.4.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.05 1.1-.22 1.8-.46 2.4a4.7 4.7 0 0 1-1.14 1.75 4.7 4.7 0 0 1-1.75 1.14c-.6.24-1.3.4-2.4.46-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-1.1-.05-1.8-.22-2.4-.46a4.7 4.7 0 0 1-1.75-1.14 4.7 4.7 0 0 1-1.14-1.75c-.24-.6-.4-1.3-.46-2.4C2.2 15 2.2 14.7 2.2 12s0-3 .06-4.1c.05-1.1.22-1.8.46-2.4.25-.65.6-1.2 1.14-1.75A4.7 4.7 0 0 1 5.6 2.6c.6-.24 1.3-.4 2.4-.46C9.1 2.2 9.4 2.2 12 2.2zm0 1.8c-2.66 0-2.97 0-4.02.06-.9.04-1.39.19-1.71.31-.43.17-.74.37-1.06.7-.32.32-.52.63-.7 1.06-.12.32-.27.8-.31 1.71C4.15 8.88 4.15 9.19 4.15 12s0 2.97.06 4.02c.04.9.19 1.39.31 1.71.17.43.37.74.7 1.06.32.32.63.52 1.06.7.32.12.8.27 1.71.31 1.05.06 1.36.06 4.02.06s2.97 0 4.02-.06c.9-.04 1.39-.19 1.71-.31.43-.17.74-.37 1.06-.7.32-.32.52-.63.7-1.06.12-.32.27-.8.31-1.71.06-1.05.06-1.36.06-4.02s0-2.97-.06-4.02c-.04-.9-.19-1.39-.31-1.71a2.9 2.9 0 0 0-.7-1.06 2.9 2.9 0 0 0-1.06-.7c-.32-.12-.8-.27-1.71-.31C14.97 4 14.66 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm4.8-2a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.tiktok.com/discover/yemanja-restaurant-dakar-brunch"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Yemanja sur TikTok"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M16.5 2h-3.1v13.6a2.6 2.6 0 1 1-2.2-2.57V9.8a5.9 5.9 0 1 0 5.3 5.87V9.1a7.6 7.6 0 0 0 4.5 1.46V7.4a4.4 4.4 0 0 1-4.5-4.4V2z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://wa.me/221776356515"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Écrire à Yemanja sur WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 1.8a8 8 0 0 1 6.9 12l-.2.4.7 2.6-2.7-.7-.4.2A8 8 0 1 1 12 4zm-3.1 4c-.2 0-.5.06-.7.35-.24.28-.9.9-.9 2.16 0 1.27.92 2.5 1.05 2.67.13.17 1.8 2.9 4.45 3.95 2.2.87 2.65.7 3.13.65.48-.05 1.53-.63 1.75-1.23.22-.6.22-1.13.15-1.24-.06-.1-.24-.16-.5-.29-.26-.13-1.53-.75-1.77-.84-.24-.09-.4-.13-.58.13-.17.26-.66.84-.81 1.02-.15.17-.3.19-.55.06-.26-.13-1.08-.4-2.06-1.27-.76-.68-1.28-1.5-1.43-1.76-.15-.26-.02-.4.11-.53.12-.12.26-.3.4-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.79-1.92-.21-.5-.42-.43-.58-.44H8.9z"
+                />
+              </svg>
+            </a>
+          </div>
+          <span class="mobile-menu__footer-mark">SC / 01</span>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <section class="hero" id="accueil" aria-labelledby="hero-title">
+        <div class="hero__media" aria-hidden="true">
+          <video
+            class="hero__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/hero-fallback.jpg"
+            data-hero-video
+          >
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+          </video>
+          <div class="hero__overlay"></div>
+          <div class="hero__grain"></div>
+        </div>
+
+        <div class="hero__content page-shell">
+          <p class="hero__eyebrow reveal reveal--delay-1">RESTAURANT · LOUNGE · DAKAR</p>
+          <h1 class="hero__title reveal reveal--delay-2" id="hero-title">
+            <span>YEMANJA</span>
+            <em>by Sweet Coffee</em>
+          </h1>
+          <p class="hero__tagline reveal reveal--delay-3">
+            L’océan comme horizon.<br />
+            <em>Le goût comme signature.</em>
+          </p>
+          
+          <div class="hero__buttons reveal reveal--delay-5">
+            <a class="button button--solid" href="reservation.html">RÉSERVER UNE TABLE <span>↗</span></a>
+            <a class="button button--outline" href="#univers">DÉCOUVRIR L’UNIVERS <span>↓</span></a>
+          </div>
+        </div>
+
+        <div class="hero__meta page-shell reveal reveal--delay-6">
+          <span class="hero__location"><i></i> Pointe des Almadies · Dakar</span>
+          <a class="scroll-cue" href="#univers" aria-label="Découvrir l'univers">
+            <span>Faire défiler</span>
+            <i class="scroll-cue__line"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="universe-section" id="univers" aria-labelledby="universe-title" data-universe>
+        <svg class="universe-botanical universe-botanical--top" viewBox="0 0 220 310" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M26 286C47 236 81 181 128 126C154 96 176 57 188 19" stroke-width="1.2" />
+            <path d="M75 206C49 198 27 182 11 159C42 158 66 171 75 206Z" stroke-width="1.1" />
+            <path d="M93 178C83 146 88 117 105 92C122 120 118 151 93 178Z" stroke-width="1.1" />
+            <path d="M124 133C124 101 140 76 165 59C168 91 151 116 124 133Z" stroke-width="1.1" />
+            <path d="M53 241C31 244 14 237 1 221C25 215 44 221 53 241Z" stroke-width="1.1" />
+            <path d="M47 224C62 205 80 198 101 199C88 219 70 228 47 224Z" stroke-width="1.1" />
+            <path d="M157 85C177 83 194 91 207 106C184 112 167 104 157 85Z" stroke-width="1.1" />
+            <path d="M109 274C128 253 151 246 177 250C159 273 137 281 109 274Z" stroke-width="1.1" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="187" cy="19" r="2.1" />
+            <circle cx="11" cy="159" r="1.7" />
+            <circle cx="1" cy="221" r="1.7" />
+          </g>
+          <g transform="translate(148 155)" fill="none" stroke="currentColor" stroke-width="0.85">
+            <ellipse cy="-5" rx="2.6" ry="5" />
+            <ellipse cy="-5" rx="2.6" ry="5" transform="rotate(72)" />
+            <ellipse cy="-5" rx="2.6" ry="5" transform="rotate(144)" />
+            <ellipse cy="-5" rx="2.6" ry="5" transform="rotate(216)" />
+            <ellipse cy="-5" rx="2.6" ry="5" transform="rotate(288)" />
+            <circle r="1.7" fill="currentColor" stroke="none" />
+          </g>
+        </svg>
+        <svg class="universe-botanical universe-botanical--bottom" viewBox="0 0 300 220" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M282 216C263 174 237 133 204 99C174 68 143 43 105 20" stroke-width="1.2" />
+            <path d="M214 113C239 105 262 109 284 126C256 137 232 133 214 113Z" stroke-width="1.1" />
+            <path d="M188 88C182 59 190 35 212 16C225 45 216 70 188 88Z" stroke-width="1.1" />
+            <path d="M163 65C135 68 112 58 94 35C123 30 147 40 163 65Z" stroke-width="1.1" />
+            <path d="M234 150C259 149 279 159 293 180C267 182 247 171 234 150Z" stroke-width="1.1" />
+            <path d="M151 60C132 48 119 31 115 10C138 20 150 36 151 60Z" stroke-width="1.1" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="105" cy="20" r="2" />
+            <circle cx="284" cy="126" r="1.7" />
+          </g>
+        </svg>
+        <div class="universe-intro page-shell">
+          <div class="universe-intro__heading universe-reveal">
+            <p class="section-eyebrow">L’UNIVERS</p>
+            <h2 id="universe-title">
+              L’Univers<span class="heading-dot">.</span>
+            </h2>
+          </div>
+          <div class="universe-intro__copy universe-reveal">
+            <p class="universe-intro__lead">Un sanctuaire posé entre le sable et la marée.</p>
+            <blockquote>
+              « À Yemanja, la table n’est pas une frontière, c’est un rivage. À la Pointe des Almadies, le bois patiné
+              par le sel, le lin qui ondule avec l’alizé et le clapotis discret des vagues invitent à ralentir. Ici, le
+              luxe se porte pieds nus : lumineux, tactile, profondément vivant. »
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="gallery-grid page-shell" aria-label="L'univers de Yemanja">
+          <figure class="gallery-grid__item universe-reveal">
+            <div class="gallery-grid__frame">
+              <img src="assets/universe-01.jpg" alt="Allée bordée de palmiers qui mène à l'océan" loading="lazy" />
+            </div>
+          </figure>
+          <figure class="gallery-grid__item universe-reveal">
+            <div class="gallery-grid__frame">
+              <img src="assets/universe-02.jpg" alt="Tables en bois et suspensions en fibres naturelles" loading="lazy" />
+            </div>
+          </figure>
+          <figure class="gallery-grid__item universe-reveal">
+            <div class="gallery-grid__frame">
+              <img src="assets/universe-03.jpg" alt="Piscine et coucher de soleil face à l'océan" loading="lazy" />
+            </div>
+          </figure>
+          <figure class="gallery-grid__item universe-reveal">
+            <div class="gallery-grid__frame">
+              <img src="assets/universe-04.jpg" alt="Terrasse de Yemanja au bord de la piscine au coucher du soleil" loading="lazy" />
+            </div>
+          </figure>
+          <figure class="gallery-grid__item universe-reveal">
+            <div class="gallery-grid__frame">
+              <img src="assets/universe-05.jpg" alt="Transats en bois posés sur le sable face aux vagues" loading="lazy" />
+            </div>
+          </figure>
+          <figure class="gallery-grid__item universe-reveal">
+            <div class="gallery-grid__frame">
+              <img src="assets/universe-06.jpg" alt="Enseigne Yemanja by Sweet Coffee sur mur en pierre, entourée de cactus" loading="lazy" />
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+            SECTION "BEST SELLERS" — 3 flash cards (flip 3D)
+      =========================================================== -->
+      <section class="bestsellers-section" id="bestsellers" aria-labelledby="bestsellers-title">
+        <div class="bestsellers-intro page-shell">
+          <p class="section-eyebrow">LES INCONTOURNABLES</p>
+          <h2 id="bestsellers-title">Best Sellers<span class="heading-dot">.</span></h2>
+          <p class="bestsellers-lead">Trois créations qui font revenir nos habitués. Touchez une carte pour la découvrir.</p>
+        </div>
+
+        <div class="bestsellers-grid page-shell">
+          <!-- Carte 1 — Entrée -->
+          <div class="flip-card" data-flip-card>
+            <button class="flip-card__inner" type="button" aria-pressed="false" aria-label="Découvrir le Ceviche de poisson, lait de coco et fruit de la passion">
+              <div class="flip-card__face flip-card__face--front">
+                <div class="flip-card__image">
+                  <img src="assets/bestseller-entree.jpg" alt="Ceviche de poisson, lait de coco et fruit de la passion" loading="lazy" />
+                </div>
+                <div class="flip-card__front-info">
+                  <span class="flip-card__category">Entrée</span>
+                  <h3 class="flip-card__name">Ceviche de poisson, lait de coco et fruit de la passion</h3>
+                  <span class="flip-card__price">10 000</span>
+                </div>
+                <span class="flip-card__cue"><i class="flip-card__cue-icon" aria-hidden="true"></i>Découvrir</span>
+              </div>
+              <div class="flip-card__face flip-card__face--back">
+                <span class="flip-card__back-ornament" aria-hidden="true"></span>
+                <h3 class="flip-card__name flip-card__name--back">Ceviche de poisson, lait de coco et fruit de la passion</h3>
+                <p class="flip-card__description">La fraîcheur délicate du poisson rencontre la douceur exotique de la coco dans un carpaccio tout en finesse. Une entrée fraîche, légère et parfumée, pensée comme une première escale aux saveurs marines.</p>
+              </div>
+            </button>
+          </div>
+
+          <!-- Carte 2 — Plat -->
+          <div class="flip-card" data-flip-card>
+            <button class="flip-card__inner" type="button" aria-pressed="false" aria-label="Découvrir le Médaillon de bœuf à la crème">
+              <div class="flip-card__face flip-card__face--front">
+                <div class="flip-card__image">
+                  <img src="assets/bestseller-plat.jpg" alt="Médaillon de bœuf à la crème, accompagné de frites" loading="lazy" />
+                </div>
+                <div class="flip-card__front-info">
+                  <span class="flip-card__category">Plat</span>
+                  <h3 class="flip-card__name">Médaillon de bœuf à la crème</h3>
+                  <span class="flip-card__price">14 000</span>
+                </div>
+                <span class="flip-card__cue"><i class="flip-card__cue-icon" aria-hidden="true"></i>Découvrir</span>
+              </div>
+              <div class="flip-card__face flip-card__face--back">
+                <span class="flip-card__back-ornament" aria-hidden="true"></span>
+                <h3 class="flip-card__name flip-card__name--back">Médaillon de bœuf à la crème</h3>
+                <p class="flip-card__description">Un médaillon de bœuf généreux et délicatement travaillé, accompagné de sa sauce pour révéler toute la richesse de la viande. Une assiette élégante et gourmande, entre caractère et subtilité.</p>
+              </div>
+            </button>
+          </div>
+
+          <!-- Carte 3 — Dessert -->
+          <div class="flip-card" data-flip-card>
+            <button class="flip-card__inner" type="button" aria-pressed="false" aria-label="Découvrir l’incontournable pain perdu">
+              <div class="flip-card__face flip-card__face--front">
+                <div class="flip-card__image">
+                  <img src="assets/bestseller-dessert.jpg" alt="L’incontournable pain perdu, nappé de caramel et chantilly" loading="lazy" />
+                </div>
+                <div class="flip-card__front-info">
+                  <span class="flip-card__category">Dessert</span>
+                  <h3 class="flip-card__name">L’incontournable pain perdu</h3>
+                  <span class="flip-card__price">6 500</span>
+                </div>
+                <span class="flip-card__cue"><i class="flip-card__cue-icon" aria-hidden="true"></i>Découvrir</span>
+              </div>
+              <div class="flip-card__face flip-card__face--back">
+                <span class="flip-card__back-ornament" aria-hidden="true"></span>
+                <h3 class="flip-card__name flip-card__name--back">L’incontournable pain perdu</h3>
+                <p class="flip-card__description">Une douceur réconfortante revisitée avec élégance. Un pain perdu généreusement fondant, aux notes délicates et gourmandes, qui invite à prolonger le plaisir jusqu’à la dernière bouchée.</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+            BANDE "DÉCOUVREZ NOTRE CARTE" — renvoie vers carte.html
+      =========================================================== -->
+      <section class="carte-banner" aria-labelledby="carte-banner-title">
+        <div class="carte-banner__shell page-shell">
+          <div class="carte-banner__text">
+            <h2 id="carte-banner-title">Découvrez notre carte</h2>
+            <p>Des saveurs pensées entre terre, mer et soleil.</p>
+          </div>
+          <a class="carte-banner__link" href="carte.html">
+            VOIR LA CARTE <span>→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+            SECTION "AVIS" — photo + slider de témoignages
+      =========================================================== -->
+      <section class="reviews-section" id="avis" aria-labelledby="reviews-title" data-reviews>
+        <svg class="universe-botanical universe-botanical--top" viewBox="0 0 220 310" aria-hidden="true" style="opacity:.5;">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M26 286C47 236 81 181 128 126C154 96 176 57 188 19" stroke-width="1.2" />
+            <path d="M75 206C49 198 27 182 11 159C42 158 66 171 75 206Z" stroke-width="1.1" />
+            <path d="M93 178C83 146 88 117 105 92C122 120 118 151 93 178Z" stroke-width="1.1" />
+          </g>
+        </svg>
+
+        <div class="reviews-shell page-shell">
+          <figure class="reviews-photo universe-reveal">
+            <div class="reviews-photo__frame">
+              <img src="assets/avis-photo.jpg" alt="Vue du restaurant Yemanja by Sweet Coffee" loading="lazy" />
+            </div>
+          </figure>
+
+          <span class="reviews-divider" aria-hidden="true"></span>
+
+          <div class="reviews-content universe-reveal">
+            <p class="section-eyebrow">AVIS CLIENTS</p>
+            <h2 id="reviews-title">Leurs Mots<span class="heading-dot">.</span></h2>
+
+            <div
+              class="reviews-slider"
+              data-reviews-slider
+              role="region"
+              aria-roledescription="carrousel"
+              aria-label="Avis clients"
+            >
+              <div class="reviews-viewport">
+                <div class="reviews-track" data-reviews-track>
+                  <article class="review-card" data-review aria-hidden="false">
+                    <div class="review-card__stars" aria-label="Note : 5 étoiles sur 5">★★★★★</div>
+                    <blockquote class="review-card__quote">
+                      Un cadre magnifique face à l’océan, une atmosphère élégante et une cuisine qui invite à prendre
+                      son temps. Une adresse parfaite pour profiter d’un moment hors du quotidien.
+                    </blockquote>
+                    <p class="review-card__author">— Amina D.</p>
+                  </article>
+
+                  <article class="review-card" data-review aria-hidden="true">
+                    <div class="review-card__stars" aria-label="Note : 5 étoiles sur 5">★★★★★</div>
+                    <blockquote class="review-card__quote">
+                      Une très belle découverte aux Almadies. Le cadre est superbe, l’ambiance agréable et les plats
+                      sont aussi beaux que gourmands. Une expérience que l’on a envie de renouveler.
+                    </blockquote>
+                    <p class="review-card__author">— Abdoul B.</p>
+                  </article>
+
+                  <article class="review-card" data-review aria-hidden="true">
+                    <div class="review-card__stars" aria-label="Note : 5 étoiles sur 5">★★★★★</div>
+                    <blockquote class="review-card__quote">
+                      Une parenthèse entre mer et gastronomie. Mention spéciale pour le médaillon de bœuf et le pain
+                      perdu, deux belles découvertes qui ont parfaitement clôturé l’expérience.
+                    </blockquote>
+                    <p class="review-card__author">— Fabie K.</p>
+                  </article>
+                </div>
+              </div>
+
+              <div class="reviews-controls">
+                <button class="reviews-arrow" type="button" aria-label="Avis précédent" data-reviews-prev>‹</button>
+                <div class="reviews-dots" data-reviews-dots role="tablist" aria-label="Choisir un avis"></div>
+                <button class="reviews-arrow" type="button" aria-label="Avis suivant" data-reviews-next>›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==========================================================
+          SECTION / FOOTER "CONTACT"
+    =========================================================== -->
+    <footer class="site-footer" id="contact" aria-labelledby="footer-title" data-footer>
+      <svg class="footer-botanical footer-botanical--left" viewBox="0 0 160 240" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1">
+          <path d="M20 230C34 180 58 132 96 90C114 70 128 46 136 20" />
+          <path d="M55 168C36 160 20 146 8 126C34 124 52 138 55 168Z" />
+          <path d="M70 132C62 106 66 82 82 60C96 84 92 110 70 132Z" />
+          <path d="M92 96C92 70 106 50 126 36C129 62 115 84 92 96Z" />
+        </g>
+      </svg>
+      <svg class="footer-botanical footer-botanical--right" viewBox="0 0 160 240" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1">
+          <path d="M140 230C126 180 102 132 64 90C46 70 32 46 24 20" />
+          <path d="M105 168C124 160 140 146 152 126C126 124 108 138 105 168Z" />
+          <path d="M90 132C98 106 94 82 78 60C64 84 68 110 90 132Z" />
+        </g>
+      </svg>
+
+      <div class="footer-shell page-shell">
+        <div class="footer-top universe-reveal">
+          <p class="footer-brand-name">YEMANJA <span>by Sweet Coffee</span></p>
+          <p class="footer-poetic">
+            Quand le soleil se couche sur l’Atlantique, Yemanja s’allume doucement — entre le sel de l’océan
+            et la douceur d’un instant que l’on voudrait ne jamais voir finir.
+          </p>
+        </div>
+
+        <div class="footer-grid">
+          <div class="footer-col universe-reveal">
+            <h3 class="footer-col__title">Adresse</h3>
+            <p class="footer-col__text">
+              <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.62 6.24 11.61 6.5 11.86a1.4 1.4 0 0 0 2 0c.26-.25 6.5-6.24 6.5-11.86C19.5 5.36 16.14 2 12 2zm0 10.25a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5z"/></svg>
+              Corniche des Almadies, Dakar
+            </p>
+          </div>
+
+          <div class="footer-col universe-reveal">
+            <h3 class="footer-col__title">Horaires</h3>
+            <p class="footer-col__text">Mardi — Dimanche<br />17h00 — 00h00</p>
+          </div>
+
+          <div class="footer-col universe-reveal">
+            <h3 class="footer-col__title">Contact</h3>
+            <p class="footer-col__text">
+              <a class="footer-phone" href="tel:+221776356515">+221 77 635 65 15</a>
+            </p>
+
+            <div class="footer-socials">
+              <a
+                class="footer-social"
+                href="https://www.instagram.com/yemanja.dkr/?hl=fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Yemanja sur Instagram"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M12 2.2c2.7 0 3 0 4.1.06 1.1.05 1.8.22 2.4.46.65.25 1.2.6 1.75 1.14.54.55.9 1.1 1.14 1.75.24.6.4 1.3.46 2.4.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.05 1.1-.22 1.8-.46 2.4a4.7 4.7 0 0 1-1.14 1.75 4.7 4.7 0 0 1-1.75 1.14c-.6.24-1.3.4-2.4.46-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-1.1-.05-1.8-.22-2.4-.46a4.7 4.7 0 0 1-1.75-1.14 4.7 4.7 0 0 1-1.14-1.75c-.24-.6-.4-1.3-.46-2.4C2.2 15 2.2 14.7 2.2 12s0-3 .06-4.1c.05-1.1.22-1.8.46-2.4.25-.65.6-1.2 1.14-1.75A4.7 4.7 0 0 1 5.6 2.6c.6-.24 1.3-.4 2.4-.46C9.1 2.2 9.4 2.2 12 2.2zm0 1.8c-2.66 0-2.97 0-4.02.06-.9.04-1.39.19-1.71.31-.43.17-.74.37-1.06.7-.32.32-.52.63-.7 1.06-.12.32-.27.8-.31 1.71C4.15 8.88 4.15 9.19 4.15 12s0 2.97.06 4.02c.04.9.19 1.39.31 1.71.17.43.37.74.7 1.06.32.32.63.52 1.06.7.32.12.8.27 1.71.31 1.05.06 1.36.06 4.02.06s2.97 0 4.02-.06c.9-.04 1.39-.19 1.71-.31.43-.17.74-.37 1.06-.7.32-.32.52-.63.7-1.06.12-.32.27-.8.31-1.71.06-1.05.06-1.36.06-4.02s0-2.97-.06-4.02c-.04-.9-.19-1.39-.31-1.71a2.9 2.9 0 0 0-.7-1.06 2.9 2.9 0 0 0-1.06-.7c-.32-.12-.8-.27-1.71-.31C14.97 4 14.66 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm4.8-2a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16z"
+                  />
+                </svg>
+              </a>
+              <a
+                class="footer-social"
+                href="https://www.tiktok.com/discover/yemanja-restaurant-dakar-brunch"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Yemanja sur TikTok"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M16.5 2h-3.1v13.6a2.6 2.6 0 1 1-2.2-2.57V9.8a5.9 5.9 0 1 0 5.3 5.87V9.1a7.6 7.6 0 0 0 4.5 1.46V7.4a4.4 4.4 0 0 1-4.5-4.4V2z"
+                  />
+                </svg>
+              </a>
+              <a
+                class="footer-social"
+                href="https://wa.me/221776356515"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Écrire à Yemanja sur WhatsApp"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 1.8a8 8 0 0 1 6.9 12l-.2.4.7 2.6-2.7-.7-.4.2A8 8 0 1 1 12 4zm-3.1 4c-.2 0-.5.06-.7.35-.24.28-.9.9-.9 2.16 0 1.27.92 2.5 1.05 2.67.13.17 1.8 2.9 4.45 3.95 2.2.87 2.65.7 3.13.65.48-.05 1.53-.63 1.75-1.23.22-.6.22-1.13.15-1.24-.06-.1-.24-.16-.5-.29-.26-.13-1.53-.75-1.77-.84-.24-.09-.4-.13-.58.13-.17.26-.66.84-.81 1.02-.15.17-.3.19-.55.06-.26-.13-1.08-.4-2.06-1.27-.76-.68-1.28-1.5-1.43-1.76-.15-.26-.02-.4.11-.53.12-.12.26-.3.4-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.79-1.92-.21-.5-.42-.43-.58-.44H8.9z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2026 Yemanja by Sweet Coffee — Tous droits réservés</span>
+          <a class="footer-back" href="#accueil">Retour en haut ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

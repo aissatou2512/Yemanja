@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Réservez votre table chez Yemanja by Sweet Coffee — Corniche des Almadies, Dakar." />
+    <meta name="theme-color" content="#17393a" />
+    <title>Réserver une table — Yemanja by Sweet Coffee</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="reservation.css" />
+  </head>
+
+  <body class="reservation-body">
+    <!-- En-tête simplifié : logo + retour au site, pour rester concentré sur la réservation -->
+    <header class="site-header is-scrolled reservation-header">
+      <nav class="navbar" aria-label="Navigation">
+        <a class="brand" href="index.html" aria-label="Yemanja by Sweet Coffee — accueil">
+          <img class="brand__logo" src="assets/logo.png" alt="Logo Yemanja" />
+          <span class="brand__name">Yemanja <span>by Sweet Coffee</span></span>
+        </a>
+        <a class="reservation-header__back" href="index.html">Retour au site</a>
+      </nav>
+    </header>
+
+    <main class="reservation-page">
+      <section class="reservation-intro page-shell">
+        <p class="section-eyebrow">RÉSERVATION</p>
+        <h1>Réserver une table<span class="heading-dot">.</span></h1>
+        <p class="reservation-intro__lead">Trois étapes, quelques instants, et votre table vous attend face à l’océan.</p>
+      </section>
+
+      <div class="reservation-shell page-shell">
+        <!-- Barre de progression -->
+        <div class="reservation-progress" data-progress>
+          <div class="reservation-progress__track">
+            <div class="reservation-progress__fill" data-progress-fill></div>
+          </div>
+          <ol class="reservation-progress__steps">
+            <li class="is-active" data-progress-step="1"><span>01</span>Date &amp; Heure</li>
+            <li data-progress-step="2"><span>02</span>Personnes &amp; Zone</li>
+            <li data-progress-step="3"><span>03</span>Vos informations</li>
+          </ol>
+        </div>
+
+        <!-- Formulaire de réservation -->
+        <form class="reservation-form" data-reservation-form novalidate>
+          <!-- ÉTAPE 1 — Date et heure -->
+          <fieldset class="reservation-step is-active" data-step="1">
+            <legend class="reservation-step__title">Choisissez la date et l’heure</legend>
+            <p class="reservation-hint">Ouvert du mardi au dimanche, de 17h00 à 00h00. Fermé le lundi.</p>
+
+            <div class="reservation-field-grid">
+              <div class="reservation-field">
+                <label for="res-date">Date</label>
+                <input type="date" id="res-date" name="date" required data-res-date />
+                <span class="reservation-error" data-error-for="date"></span>
+              </div>
+
+              <div class="reservation-field">
+                <label for="res-time">Heure</label>
+                <select id="res-time" name="time" required>
+                  <option value="" disabled selected>Choisir une heure</option>
+                  <option value="17:00">17h00</option>
+                  <option value="17:30">17h30</option>
+                  <option value="18:00">18h00</option>
+                  <option value="18:30">18h30</option>
+                  <option value="19:00">19h00</option>
+                  <option value="19:30">19h30</option>
+                  <option value="20:00">20h00</option>
+                  <option value="20:30">20h30</option>
+                  <option value="21:00">21h00</option>
+                  <option value="21:30">21h30</option>
+                  <option value="22:00">22h00</option>
+                  <option value="22:30">22h30</option>
+                  <option value="23:00">23h00</option>
+                  <option value="23:30">23h30</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="reservation-actions">
+              <button type="button" class="button button--solid" data-next>CONTINUER</button>
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 2 — Personnes et zone -->
+          <fieldset class="reservation-step" data-step="2" disabled hidden>
+            <legend class="reservation-step__title">Personnes &amp; zone</legend>
+
+            <div class="reservation-field reservation-field--guests">
+              <label for="res-guests">Nombre de personnes</label>
+              <input type="number" id="res-guests" name="guests" min="1" max="20" value="2" required />
+            </div>
+
+            <div class="reservation-zones" role="radiogroup" aria-label="Choisir une zone">
+              <label class="zone-card">
+                <input type="radio" name="zone" value="Les Pieds dans le Sable" required />
+                <span class="zone-card__mark" aria-hidden="true"></span>
+                <span class="zone-card__name">Les Pieds dans le Sable</span>
+                <span class="zone-card__desc">Tables posées à même le sable, face aux vagues.</span>
+              </label>
+              <label class="zone-card">
+                <input type="radio" name="zone" value="Terrasse vue mer" />
+                <span class="zone-card__mark" aria-hidden="true"></span>
+                <span class="zone-card__name">Terrasse vue mer</span>
+                <span class="zone-card__desc">Vue dégagée sur l’Atlantique, en plein air.</span>
+              </label>
+              <label class="zone-card">
+                <input type="radio" name="zone" value="À l’intérieur" />
+                <span class="zone-card__mark" aria-hidden="true"></span>
+                <span class="zone-card__name">À l’intérieur</span>
+                <span class="zone-card__desc">Ambiance feutrée et intimiste, climatisée.</span>
+              </label>
+            </div>
+
+            <div class="reservation-actions reservation-actions--split">
+              <button type="button" class="reservation-back" data-prev>← Retour</button>
+              <button type="button" class="button button--solid" data-next>CONTINUER</button>
+            </div>
+          </fieldset>
+
+          <!-- ÉTAPE 3 — Informations client + récapitulatif -->
+          <fieldset class="reservation-step" data-step="3" disabled hidden>
+            <legend class="reservation-step__title">Vos informations</legend>
+
+            <div class="reservation-field-grid">
+              <div class="reservation-field">
+                <label for="res-firstname">Prénom</label>
+                <input type="text" id="res-firstname" name="firstName" autocomplete="given-name" required />
+              </div>
+              <div class="reservation-field">
+                <label for="res-lastname">Nom</label>
+                <input type="text" id="res-lastname" name="lastName" autocomplete="family-name" required />
+              </div>
+              <div class="reservation-field">
+                <label for="res-email">Adresse e-mail</label>
+                <input type="email" id="res-email" name="email" autocomplete="email" required />
+              </div>
+              <div class="reservation-field">
+                <label for="res-phone">Numéro de téléphone</label>
+                <input type="tel" id="res-phone" name="phone" autocomplete="tel" required />
+              </div>
+            </div>
+
+            <div class="reservation-field">
+              <label for="res-message">Message / demande particulière <span>(facultatif)</span></label>
+              <textarea id="res-message" name="message" rows="3"></textarea>
+            </div>
+
+            <div class="reservation-summary" data-summary>
+              <h2>Récapitulatif</h2>
+              <dl>
+                <div class="reservation-summary__row">
+                  <dt>Date</dt>
+                  <dd data-summary="date">—</dd>
+                </div>
+                <div class="reservation-summary__row">
+                  <dt>Heure</dt>
+                  <dd data-summary="time">—</dd>
+                </div>
+                <div class="reservation-summary__row">
+                  <dt>Personnes</dt>
+                  <dd data-summary="guests">—</dd>
+                </div>
+                <div class="reservation-summary__row">
+                  <dt>Zone</dt>
+                  <dd data-summary="zone">—</dd>
+                </div>
+                <div class="reservation-summary__row">
+                  <dt>Coordonnées</dt>
+                  <dd data-summary="contact">—</dd>
+                </div>
+              </dl>
+            </div>
+
+            <p class="reservation-submit-error" data-submit-error hidden></p>
+
+            <div class="reservation-actions reservation-actions--split">
+              <button type="button" class="reservation-back" data-prev>← Retour</button>
+              <button type="submit" class="button button--solid" data-submit>
+                <span data-submit-label>CONFIRMER LA RÉSERVATION</span>
+              </button>
+            </div>
+          </fieldset>
+        </form>
+
+        <!-- Écran de confirmation -->
+        <div class="reservation-confirmation" data-confirmation hidden>
+          <span class="reservation-confirmation__ornament" aria-hidden="true"></span>
+          <h2>Votre demande de réservation a bien été envoyée.</h2>
+
+          <div class="reservation-summary reservation-summary--final" data-confirmation-summary>
+            <dl>
+              <div class="reservation-summary__row">
+                <dt>Date</dt>
+                <dd data-confirm="date">—</dd>
+              </div>
+              <div class="reservation-summary__row">
+                <dt>Heure</dt>
+                <dd data-confirm="time">—</dd>
+              </div>
+              <div class="reservation-summary__row">
+                <dt>Personnes</dt>
+                <dd data-confirm="guests">—</dd>
+              </div>
+              <div class="reservation-summary__row">
+                <dt>Zone</dt>
+                <dd data-confirm="zone">—</dd>
+              </div>
+              <div class="reservation-summary__row">
+                <dt>Coordonnées</dt>
+                <dd data-confirm="contact">—</dd>
+              </div>
+            </dl>
+          </div>
+
+          <p class="reservation-confirmation__note">
+            Notre équipe revient vers vous très prochainement pour confirmer votre table. Merci de votre confiance —
+            à bientôt, face à l’océan.
+          </p>
+
+          <a class="button button--outline" href="index.html">Retour à l’accueil</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="reservation.js"></script>
+  </body>
+</html>
