@@ -344,6 +344,12 @@ a {
   transition: opacity 1000ms ease;
 }
 
+.hero__video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+  pointer-events: none;
+}
+
 .hero__video.video-failed {
   opacity: 0;
 }
