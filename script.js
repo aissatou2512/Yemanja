@@ -142,6 +142,108 @@ flipCards.forEach((card) => {
   });
 });
 
+
+/* --------------------------------------------------------------------------
+   SECTION "BEST SELLERS" : défilement automatique du carrousel mobile
+   Actif uniquement en dessous de 700px (le seuil qui active le carrousel
+   en CSS). Défilement lent, boucle infinie, pause dès que l'utilisateur
+   touche/scrolle manuellement, reprise après un court délai.
+-------------------------------------------------------------------------- */
+const bestsellersGrid = document.querySelector(".bestsellers-grid");
+
+if (bestsellersGrid) {
+  const bestsellersMediaQuery = window.matchMedia("(max-width: 700px)");
+  const AUTOSCROLL_DELAY = 3200;
+  let bestsellersTimer = null;
+  let bestsellersResumeTimer = null;
+
+  const getCards = () => Array.from(bestsellersGrid.querySelectorAll(".flip-card"));
+
+  const getCurrentIndex = () => {
+    const cards = getCards();
+    if (!cards.length) return 0;
+
+    const gridCenter = bestsellersGrid.scrollLeft + bestsellersGrid.clientWidth / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    cards.forEach((card, index) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(cardCenter - gridCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    return closestIndex;
+  };
+
+  const scrollToIndex = (index) => {
+    const cards = getCards();
+    if (!cards.length) return;
+
+    const targetIndex = (index + cards.length) % cards.length;
+    const targetCard = cards[targetIndex];
+
+    const gridCenter = bestsellersGrid.clientWidth / 2;
+    const cardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2;
+
+    bestsellersGrid.scrollTo({
+      left: cardCenter - gridCenter,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollToNext = () => {
+    scrollToIndex(getCurrentIndex() + 1);
+  };
+
+  const startBestsellersAutoscroll = () => {
+    if (reduceMotion || !bestsellersMediaQuery.matches) return;
+    stopBestsellersAutoscroll();
+    bestsellersTimer = window.setInterval(scrollToNext, AUTOSCROLL_DELAY);
+  };
+
+  function stopBestsellersAutoscroll() {
+    if (bestsellersTimer) {
+      window.clearInterval(bestsellersTimer);
+      bestsellersTimer = null;
+    }
+  }
+
+  const pauseThenResume = () => {
+    stopBestsellersAutoscroll();
+    if (bestsellersResumeTimer) window.clearTimeout(bestsellersResumeTimer);
+    bestsellersResumeTimer = window.setTimeout(startBestsellersAutoscroll, AUTOSCROLL_DELAY);
+  };
+
+  // Pause dès que l'utilisateur interagit manuellement (touch, wheel, drag)
+  ["touchstart", "wheel", "pointerdown"].forEach((eventName) => {
+    bestsellersGrid.addEventListener(eventName, pauseThenResume, { passive: true });
+  });
+
+  // Réagit au passage desktop <-> mobile
+  const handleBreakpointChange = () => {
+    if (bestsellersMediaQuery.matches) {
+      startBestsellersAutoscroll();
+    } else {
+      stopBestsellersAutoscroll();
+      if (bestsellersResumeTimer) window.clearTimeout(bestsellersResumeTimer);
+    }
+  };
+
+  if (bestsellersMediaQuery.addEventListener) {
+    bestsellersMediaQuery.addEventListener("change", handleBreakpointChange);
+  } else {
+    // Fallback anciens navigateurs
+    bestsellersMediaQuery.addListener(handleBreakpointChange);
+  }
+
+  handleBreakpointChange();
+}
 /* --------------------------------------------------------------------------
    SECTION "AVIS" : slider de témoignages
    Défilement auto lent, flèches, pagination, swipe tactile. Le défilement

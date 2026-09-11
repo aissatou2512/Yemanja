@@ -15,6 +15,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="reservation.css" />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
 
   <body class="reservation-body">
@@ -184,6 +185,7 @@
 
             <div class="reservation-actions reservation-actions--split">
               <button type="button" class="reservation-back" data-prev>← Retour</button>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAEpi-ATPv3pcID53"></div>
               <button type="submit" class="button button--solid" data-submit>
                 <span data-submit-label>CONFIRMER LA RÉSERVATION</span>
               </button>
@@ -231,7 +233,7 @@
       </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="reservation.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="reservation.js"></script>
   </body>
 </html>

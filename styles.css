@@ -987,8 +987,8 @@ a {
   }
 
   .hero__title {
-    max-width: 700px;
-    font-size: clamp(4.6rem, 13vw, 8.2rem);
+    max-width: 500px;
+    font-size: clamp(3.2rem, 14vw, 5.5rem);
   }
 }
 
@@ -1045,9 +1045,9 @@ a {
   }
 
   .hero__title {
-    font-size: clamp(4.1rem, 20vw, 6.2rem);
-    letter-spacing: 0.035em;
-    line-height: 0.72;
+    font-size: clamp(2.8rem, 15vw, 4.6rem);
+    letter-spacing: 0.03em;
+    line-height: 0.85;
   }
 
   .hero__title em {
@@ -1056,8 +1056,8 @@ a {
   }
 
   .hero__tagline {
-    margin-top: 1.8rem;
-    font-size: clamp(1.5rem, 7.4vw, 2.2rem);
+    margin-top: 1.4rem;
+    font-size: clamp(1.3rem, 6vw, 1.9rem);
   }
 
   .hero__description {
@@ -1115,8 +1115,14 @@ a {
 
   .hero__buttons .button {
     width: 100%;
+    min-height: 42px;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.56rem;
   }
 
+  .hero__buttons .button span {
+    font-size: 0.85rem;
+  }
   .hero__meta {
     right: var(--page-gutter);
     bottom: 1.7rem;
@@ -1410,6 +1416,27 @@ a {
 
   .flip-card__cue-icon {
     animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .bestsellers-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  }
+
+  .bestsellers-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .flip-card {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
   }
 }
 
@@ -1805,26 +1832,39 @@ a {
 }
 
 @media (max-width: 560px) {
+  .site-footer {
+    padding-top: 2.75rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .footer-top {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .footer-poetic {
+    max-width: 500px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2.2rem;
-    text-align: center;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
   }
 
   .footer-col__text {
-    justify-content: center;
+    font-size: 0.8rem;
   }
 
   .footer-socials {
-    justify-content: center;
+    margin-top: 0.8rem;
   }
 
   .footer-bottom {
-    flex-direction: column;
-    text-align: center;
+    padding-top: 1.25rem;
   }
 }
-
 /* ==========================================================================
    BANDE "DÉCOUVREZ NOTRE CARTE" — renvoie vers carte.html
    ========================================================================== */

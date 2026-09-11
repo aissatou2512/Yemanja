@@ -1,10 +1,9 @@
-const SUPABASE_URL = "https://aadxnrhjfhmkmcvzjuai.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_nbNsRQFBROExIgEweq2_2g_zbIfIhHn";
-const RESTAURANT_ID = "7c600bdb-345a-4384-9036-2f34239366ba"; // l'UUID de Yemanja dans ta table restaurants
+const SUPABASE_URL = "https://ezybdlomqtrwaqeewnyj.supabase.co"; 
+const SUPABASE_ANON_KEY = "sb_publishable_hO3-pETuPEEenZZMCTVJxQ_bHxt9_yS";
+const RESTAURANT_ID = "999c925b-bac3-430a-80bb-860ef386f528";
 const RESERVATION_EMAIL = "aissatouba.aiba@gmail.com";
 
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
 const form = document.querySelector("[data-reservation-form]");
 const steps = Array.from(form.querySelectorAll("[data-step]"));
 const progressFill = document.querySelector("[data-progress-fill]");
@@ -123,25 +122,6 @@ function fillConfirmation() {
   document.querySelector('[data-confirm="contact"]').textContent = contact;
 }
 
-/* ---------------------------------------------------------------------- */
-/* Envoi de la réservation                                                */
-/* ---------------------------------------------------------------------- */
-function buildMailtoFallback(data) {
-  const subject = encodeURIComponent(`Réservation Yemanja — ${data.firstName} ${data.lastName}`);
-  const body = encodeURIComponent(
-    `Nouvelle demande de réservation\n\n` +
-      `Date : ${formatDate(data.date)}\n` +
-      `Heure : ${data.time}\n` +
-      `Personnes : ${data.guests}\n` +
-      `Zone : ${data.zone}\n\n` +
-      `Client : ${data.firstName} ${data.lastName}\n` +
-      `E-mail : ${data.email}\n` +
-      `Téléphone : ${data.phone}\n` +
-      `Message : ${data.message || "—"}`,
-  );
-  return `mailto:${RESERVATION_EMAIL}?subject=${subject}&body=${body}`;
-}
-
 async function sendReservation(data) {
   const { data: success, error } = await supabaseClient.rpc("reserver_creneau", {
     p_restaurant_id: RESTAURANT_ID,
@@ -156,7 +136,7 @@ async function sendReservation(data) {
   if (error) throw new Error("technique");
   if (success === false) throw new Error("complet");
 
-  // Réservation confirmée → on envoie l'email de notification au resto
+  // Réservation confirmée → notifier le resto par email
   try {
     await fetch(`${SUPABASE_URL}/functions/v1/envoyer-email-reservation`, {
       method: "POST",
@@ -171,12 +151,12 @@ async function sendReservation(data) {
         date: data.date,
         heure: data.time,
         nb_personnes: data.guests,
+        message: data.message,
         nom_restaurant: "Yemanja by Sweet Coffee",
         email_restaurant: RESERVATION_EMAIL,
       }),
     });
   } catch (emailError) {
-    // On ne bloque pas la confirmation client si l'email échoue - juste un log
     console.error("Email non envoyé :", emailError);
   }
 }
@@ -185,18 +165,58 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!validateStep(3)) return;
 
+  // Récupère le token généré par le widget Turnstile
+  const turnstileToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+
+  if (!turnstileToken) {
+    submitError.hidden = false;
+    submitError.textContent = "Merci de valider la vérification anti-robot.";
+    return;
+  }
+
+  // Vérifie ce token auprès de notre Edge Function, avant d'aller plus loin
+  submitButton.classList.add("is-loading");
+  submitLabel.textContent = "VÉRIFICATION…";
+
+  try {
+    const turnstileToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+    console.log("Token Turnstile récupéré :", turnstileToken);
+    const captchaRes = await fetch(`${SUPABASE_URL}/functions/v1/verifier-captcha`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({ token: turnstileToken }),
+    });
+    const captchaResult = await captchaRes.json();
+
+    if (!captchaResult.success) {
+      submitButton.classList.remove("is-loading");
+      submitLabel.textContent = "CONFIRMER LA RÉSERVATION";
+      submitError.hidden = false;
+      submitError.textContent = "Vérification anti-robot échouée. Merci de réessayer.";
+      return;
+    }
+  } catch {
+    submitButton.classList.remove("is-loading");
+    submitLabel.textContent = "CONFIRMER LA RÉSERVATION";
+    submitError.hidden = false;
+    submitError.textContent = "Erreur de vérification. Merci de réessayer.";
+    return;
+  }
+
   steps.forEach((fieldset) => { fieldset.disabled = false; });
 
   const data = collectData();
   submitError.hidden = true;
   submitError.classList.remove("is-visible");
-  submitButton.classList.add("is-loading");
   submitLabel.textContent = "ENVOI EN COURS…";
 
   try {
     await sendReservation(data);
     showConfirmation();
-    } catch (error) {
+  } catch (error) {
     submitButton.classList.remove("is-loading");
     submitLabel.textContent = "CONFIRMER LA RÉSERVATION";
     submitError.hidden = false;
