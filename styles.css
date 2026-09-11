@@ -341,13 +341,18 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: opacity 1000ms ease;
+  opacity: 0;
+  transition: opacity 900ms ease;
 }
 
 .hero__video::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
   pointer-events: none;
+}
+
+.hero__video.is-playing {
+  opacity: 1;
 }
 
 .hero__video.video-failed {

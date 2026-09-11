@@ -57,6 +57,10 @@ heroVideo.addEventListener("canplay", () => {
   heroVideo.classList.remove("video-failed");
 });
 
+heroVideo.addEventListener("playing", () => {
+  heroVideo.classList.add("is-playing");
+});
+
 if (universe && "IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
     (entries, observer) => {
